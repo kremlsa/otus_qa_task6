@@ -1,0 +1,10 @@
+{
+  "id": 10001,
+  "username": "captainNemo",
+  "firstName": "Captain",
+  "lastName": "Nemo",
+  "email": "nautilus@pompilius.org",
+  "password": "razdvatri",
+  "phone": "5-555-555-555",
+  "userStatus": 2
+}
