@@ -20,6 +20,7 @@ public class createSteps {
     Response response;
     String userName;
     JSONCompareMode compareMode;
+    private final String PATH_TO_DATA = "src/test/testData/";
 
     @Дано("API на сайте {string}")
     public void createContext(String url) {
@@ -28,7 +29,7 @@ public class createSteps {
 
     @И("данные пользователя {string}")
     public void createUser(String path) {
-        user = Parser.parseJSONFile("src/test/resources/" + path);
+        user = Parser.parseJSONFile(PATH_TO_DATA + path);
     }
 
     @Когда("отправляется запрос на создание пользователя")

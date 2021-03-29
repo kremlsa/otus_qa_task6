@@ -33,8 +33,9 @@ public class UserService {
         return given()
                 .spec(spec)
                 .with()
+                .pathParam("username", username)
                 .when()
                 .log().all()
-                .get(GET_USER + username);
+                .get(GET_USER + "{username}");
     }
 }
