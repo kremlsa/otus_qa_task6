@@ -37,7 +37,7 @@ pipeline {
     
     post {
         always {
-            emailext body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html', subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) from '${GIT_URL}/${GIT_BRANCH}' ended with ${currentBuild.currentResult}", to: ${EMAIL_NOTIFICATION}
+            emailext body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html', subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) from '${GIT_URL}/${GIT_BRANCH}' ended with ${currentBuild.currentResult}", to: "${EMAIL_NOTIFICATION}"
             
             allure([
                   includeProperties: false,
