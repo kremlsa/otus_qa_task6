@@ -13,6 +13,7 @@ pipeline {
     parameters {
         string(name: 'GIT_URL', defaultValue: 'https://github.com/kremlsa/otus_qa_task6.git', description: 'The target git url')
         string(name: 'GIT_BRANCH', defaultValue: 'allure', description: 'The target git branch')
+        string(name: 'EMAIL_NOTIFICATION', defaultValue: 'kremlsa@yandex.ru', description: 'default email')
     }
 
     stages {
@@ -36,7 +37,7 @@ pipeline {
     
     post {
         always {
-            emailext body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html', subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) from '${GIT_URL}/${GIT_BRANCH}' ended with ${currentBuild.currentResult}", to: 'kremlsa@yandex.ru'
+            emailext body: readFile("target/surefire-reports/emailable-report.html"), mimeType: 'text/html', subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) from '${GIT_URL}/${GIT_BRANCH}' ended with ${currentBuild.currentResult}", to: '${EMAIL_NOTIFICATION}'
             
             allure([
                   includeProperties: false,
